@@ -14,7 +14,7 @@
   "scripts": {
       "build": "lerna run build --parallel",
       "start": "lerna run start --parallel",
-      "start:prod": "lerna run start:prod --scope=@fleet-management/api",
+      "start:prod": "lerna run start:prod --scope=@fleet-management/api --stream",
       "docker:simulate:start": "docker-compose -f docker-compose-simulate.yaml --compatibility up -d",
       "docker:simulate:stop": "docker-compose -f docker-compose-simulate.yaml down"
   }

@@ -8,4 +8,6 @@ COPY . .
 RUN yarn install
 RUN yarn run build
 
+ENV NODE_ENV=production
+
 CMD ["yarn", "run", "simulate"]

@@ -6,52 +6,45 @@ info:
 servers:
 - url: /api/v1
 tags:
-- name: Examples
-  description: Simple example endpoints
+- name: Fleet
+  description: Endpoint for Fleet management
 - name: Specification
   description: The swagger API specification
 paths:
-  /examples:
+  /fleet:
     get:
       tags:
-      - Examples
-      description: Fetch all examples
+      - Fleet
+      description: Fetch all vehicle details
       responses:
         200:
-          description: Returns all examples
+          description: Returns all vehicles
           content: {}
     post:
       tags:
-      - Examples
-      description: Create a new example
-      requestBody:
-        description: an example
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExampleBody'
-        required: true
+      - Fleet
+      description: Set data for a vehicle in fleet
       responses:
         200:
           description: Returns all examples
           content: {}
-  /examples/{id}:
+  /fleet/{uuid}:
     get:
       tags:
       - Examples
       parameters:
-      - name: id
+      - name: uuid
         in: path
-        description: The id of the example to retrieve
+        description: The uuid of the vehicle to retrieve
         required: true
         schema:
-          type: integer
+          type: string
       responses:
         200:
-          description: Return the example with the specified id
+          description: Return the vehicle details with given uuid
           content: {}
         404:
-          description: Example not found
+          description: Vehicle not found
           content: {}
   /spec:
     get:
@@ -61,14 +54,3 @@ paths:
         200:
           description: Return the API specification
           content: {}
-components:
-  schemas:
-    ExampleBody:
-      title: example
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          type: string
-          example: no_stress
