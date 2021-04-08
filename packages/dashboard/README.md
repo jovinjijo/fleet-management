@@ -1,4 +1,8 @@
-# Ui
+# Dashboard for viewing vehicles
+
+ - Bootstrapped using Angular CLI.
+ - Uses HTTP calls to get all vehicles and their locations
+ - WebSocket connection is used to get location updates of vehicles
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 

@@ -1,11 +1,11 @@
 {
-  "name": "@fleet-management/ui",
+  "name": "@fleet-management/dashboard",
   "version": "0.0.0",
   "author": "Jovin Jijo <jovin96@gmail.com> (https://github.com/jovinjijo)",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
