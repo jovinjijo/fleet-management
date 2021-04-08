@@ -1,0 +1,17 @@
+{
+  "name": "fleet-management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jovin",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "lerna": "^4.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+      "build": "lerna run build --parallel"
+  }
+}
