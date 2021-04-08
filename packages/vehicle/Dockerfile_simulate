@@ -1,0 +1,11 @@
+FROM node:14-alpine
+
+ENV MQTT_URL=tcp://localhost:1883
+
+WORKDIR /home/vehicle
+COPY . .
+
+RUN yarn install
+RUN yarn run build
+
+CMD ["yarn", "run", "simulate"]
