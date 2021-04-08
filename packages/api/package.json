@@ -1,12 +1,12 @@
 {
-  "name": "api",
+  "name": "@fleet-management/api",
   "version": "1.0.0",
   "description": "Package for API",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "compile": "ts-node build.ts && tsc",
-    "dev": "nodemon server/index.ts | pino-pretty",
+    "start:prod": "node dist/index.js",
+    "build": "ts-node build.ts && tsc",
+    "start": "nodemon server/index.ts | pino-pretty",
     "dev:debug": "nodemon --exec \"node -r ts-node/register --inspect-brk\" server/index.ts | pino-pretty",
     "lint": "eslint -c .eslintrc.js \"{server, test}/**/*.{js,ts,tsx}\" --quiet",
     "lint:fix": "eslint -c .eslintrc.js \"{server, test}/**/*.{js,ts,tsx}\" --quiet --fix",
@@ -18,10 +18,8 @@
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "pino": "^6.11.0",
-    
-    "express-openapi-validator": "^4.10.9"
-    
+    "express-openapi-validator": "^4.10.9",
+    "pino": "^6.11.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",
@@ -46,5 +44,5 @@
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   },
-  "author": "Carmine DiMascio <cdimascio@gmail.com> (https://github.com/cdimascio)"
+  "author": "Jovin Jijo <jovin96@gmail.com> (https://github.com/jovinjijo)"
 }

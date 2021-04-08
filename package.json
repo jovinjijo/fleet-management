@@ -2,7 +2,7 @@
   "name": "fleet-management",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Jovin",
+  "author": "Jovin Jijo <jovin96@gmail.com> (https://github.com/jovinjijo)",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -12,6 +12,8 @@
     "packages/*"
   ],
   "scripts": {
-      "build": "lerna run build --parallel"
+      "build": "lerna run build --parallel",
+      "start": "lerna run start --parallel",
+      "start:prod": "lerna run start:prod --scope=@fleet-management/api"
   }
 }

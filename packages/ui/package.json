@@ -1,6 +1,7 @@
 {
-  "name": "ui",
+  "name": "@fleet-management/ui",
   "version": "0.0.0",
+  "author": "Jovin Jijo <jovin96@gmail.com> (https://github.com/jovinjijo)",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
