@@ -3,7 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 
 class LocationPublisherSimulator extends LocationPublisher {
     getPosition() {
-        return { timestamp: Date.now(), coord: { latitude: 56, longitude: 65, speed: 0 } };
+        const currentPosition = this.vehicle && this.vehicle.getPosition();
+        if (currentPosition) {
+            const latitude = currentPosition.coord.latitude + Math.random() * 0.0001;
+            const longitude = currentPosition.coord.longitude + Math.random() * 0.0001;
+            return { timestamp: Date.now(), coord: { latitude, longitude } };
+        }
+        return { timestamp: Date.now(), coord: { latitude: Math.random() * 90, longitude: Math.random() * 180 } };
     }
 }
 
