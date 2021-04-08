@@ -1,0 +1,37 @@
+version: "3"
+services:
+  mq:
+    image: eclipse-mosquitto:1.6
+    networks:
+      - fleet
+  # fleet-api-server:
+  #   image: fleet-api-server
+  #   container_name: fleet-server
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     - fleet
+  #   environment:
+  #     - MQTT_URL=tcp://mq:1883
+  #   ports:
+  #     - 4001:4001
+  #   depends_on:
+  #     - mq
+  fleet-vehicle:
+    image: fleet-vehicle
+    build:
+      context: ./packages/vehicle
+      dockerfile: ./Dockerfile_simulate
+    networks:
+      - fleet
+    environment:
+      - MQTT_URL=tcp://mq:1883
+    depends_on:
+      - mq
+    deploy:
+      mode: replicated
+      replicas: 6
+networks:
+  fleet:
+    driver: bridge
