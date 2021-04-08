@@ -1,3 +1,3 @@
-import { LocationUpdate } from "./src/Vehicle";
+import { LocationUpdate, Position, VehicleDetails } from "./src/Vehicle";
 
-export { LocationUpdate };
+export { LocationUpdate, Position, VehicleDetails };

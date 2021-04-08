@@ -1,5 +1,10 @@
 import MQTT from "async-mqtt";
 
+export interface VehicleDetails {
+    uuid: string;
+    position: Position;
+}
+
 export interface Position {
     timestamp: number;
     coord: Coordinates;
@@ -10,14 +15,12 @@ interface Coordinates {
     longitude: number;
 }
 
-export interface LocationUpdate {
-    uuid: string;
-    position: Position;
+export interface LocationUpdate extends VehicleDetails {
 }
 
-export class Vehicle {
-    private uuid: string;
-    private position: Position;
+export class Vehicle implements VehicleDetails {
+    uuid: string;
+    position: Position;
     private mqttClient?: MQTT.AsyncMqttClient;
 
     constructor(uuid: string, position: Position) {
@@ -46,9 +49,5 @@ export class Vehicle {
         } catch (e) {
             console.log(e);
         }
-    }
-
-    getPosition() {
-        return this.position;
     }
 }
