@@ -2,6 +2,10 @@ import './common/env';
 import Server from './common/server';
 import routes from './routes';
 import { SocketServer } from './common/socketserver';
+import {
+  SocketUpdate,
+  VehicleDetailsExtended,
+} from './api/services/fleet.service';
 
 const port = parseInt(process.env.PORT ?? '3000');
 
@@ -15,4 +19,4 @@ server.listen(httpServer, port);
 
 import './api/services/mqttsubscriber.service';
 
-export { socketServer };
+export { socketServer, SocketUpdate, VehicleDetailsExtended };

@@ -1,7 +1,7 @@
 import L from '../../common/logger';
 import { VehicleDetails } from '@fleet-management/vehicle';
 
-interface VehicleDetailsExtended extends Omit<VehicleDetails, 'uuid'> {
+export interface VehicleDetailsExtended extends Omit<VehicleDetails, 'uuid'> {
   speed: number;
 }
 
