@@ -1,4 +1,4 @@
-import MQTT from "async-mqtt";
+import { connectAsync, AsyncMqttClient } from "async-mqtt";
 
 export interface VehicleDetails {
     uuid: string;
@@ -15,13 +15,12 @@ interface Coordinates {
     longitude: number;
 }
 
-export interface LocationUpdate extends VehicleDetails {
-}
+export interface LocationUpdate extends VehicleDetails {}
 
 export class Vehicle implements VehicleDetails {
     uuid: string;
     position: Position;
-    private mqttClient?: MQTT.AsyncMqttClient;
+    private mqttClient?: AsyncMqttClient;
 
     constructor(uuid: string, position: Position) {
         console.log(`vehicle instance created, uuid: ${uuid}`);
@@ -30,8 +29,8 @@ export class Vehicle implements VehicleDetails {
     }
 
     async connect(url: string) {
-        console.log(`connected to MQTT server, url: ${url}`)
-        this.mqttClient = await MQTT.connectAsync(url);
+        console.log(`connected to MQTT server, url: ${url}`);
+        this.mqttClient = await connectAsync(url);
     }
 
     async disconnect() {
