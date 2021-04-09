@@ -5,6 +5,8 @@ interface VehicleDetailsExtended extends Omit<VehicleDetails, 'uuid'> {
   speed: number;
 }
 
+export type SocketUpdate = VehicleDetails & VehicleDetailsExtended;
+
 const vehicles: Map<string, VehicleDetailsExtended> = new Map();
 
 export class VehicleService {
@@ -21,8 +23,9 @@ export class VehicleService {
   set(data: VehicleDetails): void {
     L.info(`set data for vehicle with uuid ${data.uuid}`);
     const currentData = vehicles.get(data.uuid);
+    let speed = 0;
     if (currentData) {
-      const speed =
+      speed =
         distance(
           data.position.coord.latitude,
           data.position.coord.longitude,
@@ -30,10 +33,13 @@ export class VehicleService {
           currentData.position.coord.longitude
         ) /
         ((data.position.timestamp - currentData.position.timestamp) / 1000);
-      vehicles.set(data.uuid, { position: data.position, speed });
-    } else {
-      vehicles.set(data.uuid, { position: data.position, speed: 0 });
     }
+    vehicles.set(data.uuid, { position: data.position, speed });
+    socketServer.broadcast('locationUpdate', {
+      uuid: data.uuid,
+      position: data.position,
+      speed: speed,
+    } as SocketUpdate);
   }
 }
 
@@ -53,4 +59,5 @@ function distance(lat1: number, lng1: number, lat2: number, lng2: number) {
 
 export default new VehicleService();
 
-import './mqttSubscriber.service';
+import './mqttsubscriber.service';
+import { socketServer } from '../..';
