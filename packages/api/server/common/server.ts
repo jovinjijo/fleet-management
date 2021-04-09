@@ -23,15 +23,22 @@ export default class ExpressServer {
       })
     );
     app.use(bodyParser.text({ limit: process.env.REQUEST_LIMIT || '100kb' }));
-    app.use(cookieParser(process.env.SESSION_SECRET));
-    app.use(express.static(`${root}/public`));
+    app.use(
+      cookieParser(process.env.SESSION_SECRET || Math.random().toString())
+    );
 
     const apiSpec = path.join(__dirname, 'api.yml');
+
+    const isProd = process.env.NODE_ENV === 'production';
+    if (!isProd) {
+      app.use(express.static(`${root}/public`));
+      app.use(process.env.OPENAPI_SPEC || '/spec', express.static(apiSpec));
+    }
+
     const validateResponses = !!(
       process.env.OPENAPI_ENABLE_RESPONSE_VALIDATION &&
       process.env.OPENAPI_ENABLE_RESPONSE_VALIDATION.toLowerCase() === 'true'
     );
-    app.use(process.env.OPENAPI_SPEC || '/spec', express.static(apiSpec));
     app.use(
       OpenApiValidator.middleware({
         apiSpec,
@@ -47,7 +54,7 @@ export default class ExpressServer {
     const isProd = process.env.NODE_ENV === 'production';
     if (isProd) {
       // Compute the build path and index.html path
-      const buildPath = path.resolve(__dirname, '../../../ui/dist');
+      const buildPath = path.resolve(__dirname, '../../../dashboard/dist/ui');
       const indexHtml = path.join(buildPath, 'index.html');
 
       // Setup build path as a static assets path
@@ -60,7 +67,11 @@ export default class ExpressServer {
     return this;
   }
 
-  listen(port: number): Application {
+  createServer(): http.Server {
+    return http.createServer(app);
+  }
+
+  listen(server: http.Server, port: number): Application {
     const welcome = (p: number) => (): void =>
       l.info(
         `up and running in ${
@@ -68,7 +79,7 @@ export default class ExpressServer {
         } @: ${os.hostname()} on port: ${p}}`
       );
 
-    http.createServer(app).listen(port, welcome(port));
+    server.listen(port, welcome(port));
 
     return app;
   }
