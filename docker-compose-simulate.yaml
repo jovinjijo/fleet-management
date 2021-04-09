@@ -14,7 +14,7 @@ services:
     environment:
       - MQTT_URL=tcp://mq:1883
     ports:
-      - 4000:4000
+      - 3000:3000
     depends_on:
       - mq
   fleet-vehicle:
@@ -30,7 +30,7 @@ services:
       - mq
     deploy:
       mode: replicated
-      replicas: 6
+      replicas: 5
 networks:
   fleet:
     driver: bridge

@@ -1,0 +1,11 @@
+.git/
+node_modules/
+dist/
+.vscode/
+# packages/api/node_modules
+# packages/api/dist
+packages/api/.env
+# packages/dashboard/node_modules
+# packages/dashboard/dist
+# packages/vehicle/dist
+# packages/vehicle/node_modules

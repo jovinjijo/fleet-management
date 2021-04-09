@@ -1,7 +1,7 @@
 FROM node:14-alpine
 
 ENV APP_ID=api
-ENV PORT=4000
+ENV PORT=3000
 ENV OPENAPI_SPEC=/api/v1/spec
 
 WORKDIR /home/fleet-management
@@ -12,6 +12,6 @@ RUN yarn run build
 
 ENV NODE_ENV=production
 
-EXPOSE 4000
+EXPOSE 3000
 
 CMD ["yarn", "run", "start:prod"]
