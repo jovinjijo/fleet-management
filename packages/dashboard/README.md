@@ -4,6 +4,10 @@
  - Uses HTTP calls to get all vehicles and their locations
  - WebSocket connection is used to get location updates of vehicles
 
+## Important Files
+ - [fleet-data-provider.service.ts](src/app/fleet-data-provider.service.ts) - Data fetching logic using HTTP calls and WebSockets. Uses RxJs for event based processing.
+ - [table-view.component.ts](src/app/table-view/table-view.component.ts) - Component which subscribes to updates from Data provider service and shows it in a Table.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
 ## Development server

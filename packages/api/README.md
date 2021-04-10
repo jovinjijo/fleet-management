@@ -1,6 +1,13 @@
-# api
+# API Server for Fleet Management
 
-Package for API
+ - Subscribes to location updates from vehicles through the message broker.
+ - Information about present location of vehicles are stored in memory.
+ - OpenAPI 3 compliant Express.js server is used for APIs to view vehicles, update data, etc.
+ - Socket.IO WebSocket server for updating locations of vehicles to the Dashboard
+
+## Important Files
+ - [mqttsubscriber.service.ts](server/api/services/mqttsubscriber.service.ts) - Subscribes to location Updates and stores it in FleetService
+ - [fleet.service.ts](server/api/services/fleet.service.ts) - In memory store for vehicle details; Has setters and getters.
 
 ## Quick Start
 
