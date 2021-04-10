@@ -1,5 +1,7 @@
 # Fleet Management System
 
+![Demo](./assets/demo.gif)
+
 ## Problem Statement
 
 The goal of this assignment is to find out how you, as a Full-stack Engineer, handle a scenario with the constraints and vagueness of the real world. We expect you to make a variety of assumptions given the information you have, and to clearly document them in the README.
