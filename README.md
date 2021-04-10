@@ -96,3 +96,17 @@ This runs the vehicles' random location data as separate containers. There are 5
 
  - Authentication for vehicles publishing messages to Message Broker - Vehicles and the Server are physically separate and there needs to be a way to authenticate the vehicles. This can be done using a private key stored on the vehicles, which can be verified by the server. A key rotation mechanism can also be added for more security.
  - Authentication for viewing the Dashboard - There can be many ways authentication can be done for a person viewing the Dashboard. SSO would be ideal for an enterprise. Here, providing a local login using [Passport.js](www.passportjs.org) would just add some boilerplate code.
+
+## Docker Screenshots
+
+Overview
+
+![Overview](./assets/docker.png)
+
+Vehicle
+
+![Vehicle](./assets/vehicle.png)
+
+API Server
+
+![API Server](./assets/server.png)
