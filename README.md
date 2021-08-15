@@ -2,17 +2,13 @@
 
 ![Demo](./assets/demo.gif)
 
-## Problem Statement
+## Summary
 
-The goal of this assignment is to find out how you, as a Full-stack Engineer, handle a scenario with the constraints and vagueness of the real world. We expect you to make a variety of assumptions given the information you have, and to clearly document them in the README.
+An application which tracks the location of a fleet of vehicles in realtime. Consists of a Message Broker through which Vehicles and server communicate. Vehicles publish messages about the location and server subscribes to it and updates it in the dashboard via WebSockets.
 
-A company has a number of vehicles around the country. You have been tasked to build a system to track the location of every vehicle in real-time. The system's dashboard will only display the last location of the vehicles, so the backend doesn't need to worry about the history. You can store the state of the application in-memory for simplicity reasons. Each vehicle should be associated with an unique identifier, and should report its geolocation coordinates to the central server in real-time through a cellular modem connection. Cellular modem connections are expensive, therefore you need to make sure the vehicles report back their location using as little data as possible. You are in charge of deciding the protocol and frequency that the vehicles will use to communicate with the backend. You are welcome to code a small vehicle simulation if that helps with testing, but its not mandatory.
+Here, vehicles are simple JavaScript programs which publishes random location coordinates. 
 
-The dashboard should be a simple single-page application displaying the list of active vehicles, by their unique identifiers, along with their current speed. You should visually highlight the vehicles that have not been moving for more than 10 seconds (the vehicle sent updates, but didn't move more that 1 meter).
-
-Please provide a Dockerfile or a Docker Compose file so we can easily run your project. That being said, ShoppinPal is a Node.js based company, so we will appreciate if you provide additional comments and documentation if that's not the stack you chose, just to make it easier for us to review your solution. Alternatives are Python(Flask/Django preferred). And regarding frontend you should stick with AngularJS or Angular 2+ versions.
-
-## Solution
+## Structure of the project
 
 There are 3 components in this System.
  - Vehicles, which sends their location updates to a server
@@ -69,7 +65,6 @@ A Simulation has been implemented and it has been packaged into a [docker-compos
 
 ```
 yarn run docker:simulate:start
-
 ```
 OR
 ```
